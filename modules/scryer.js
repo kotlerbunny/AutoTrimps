@@ -107,6 +107,7 @@ function useScryerStance() {
     //Checks if Overkill is allowed
     var useOverkill = getPageSetting('UseScryerStance') == true && getPageSetting('ScryerUseWhenOverkill');
         useOverkill &= !(getPageSetting('ScryerUseinSpire2') == 0 && !game.global.mapsActive && (isActiveSpireAT() || disActiveSpireAT()));
+        useOverkill &= !(scry == 5);
 
     //Overkill
     if (useOverkill && getCurrentEnemy()) {
