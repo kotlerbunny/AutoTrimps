@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         AutoTrimps-Ray
+// @name         AutoTrimps-kotlerbunny
 // @version      6.0.0.0
 // @namespace    https://kotlerbunny.github.io/AutoTrimps
 // @downloadURL  https://kotlerbunny.github.io/AutoTrimps/.user.js
@@ -15,7 +15,7 @@
 // ==/UserScript==
 
 var script = document.createElement('script');
-script.id = 'AutoTrimps-Ray';
+script.id = 'AutoTrimps-kotlerbunny';
 //This can be edited to point to your own Github Repository URL.
 script.src = 'https://kotlerbunny.github.io/AutoTrimps/AutoTrimps2.js';
 //script.setAttribute('crossorigin',"use-credentials");
