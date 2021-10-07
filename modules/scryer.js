@@ -107,7 +107,6 @@ function useScryerStance() {
     //Checks if Overkill is allowed
     var useOverkill = getPageSetting('UseScryerStance') == true && getPageSetting('ScryerUseWhenOverkill');
         useOverkill &= !(getPageSetting('ScryerUseinSpire2') == 0 && !game.global.mapsActive && (isActiveSpireAT() || disActiveSpireAT()));
-        useOverkill &= !(scry == 5);
 
     //Overkill
     if (useOverkill && getCurrentEnemy()) {
@@ -117,7 +116,7 @@ function useScryerStance() {
         var HS_next = oneShotPower("S", 1);
         var HSD_next = oneShotPower("D", 1, true);
         if (readyToSwitch() && HS > 0 && HS >= HSD && (HS > 1 || HS_next > 0 && HS_next >= HSD_next)) {
-            setFormation(4);
+            setFormation(scry);
             return;
         }
     }
