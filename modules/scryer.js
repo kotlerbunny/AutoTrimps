@@ -30,7 +30,14 @@ function readyToSwitch(stance = "S") {
 function useScryerStance() {
     var scry = 4;
     
-    if (game.global.uberNature == "Wind" && getEmpowerment() == "Wind") {
+    //if (game.global.uberNature == "Wind" && getEmpowerment() == "Wind" && (game.global.challengeActive != "Daily")) {
+    if (game.global.uberNature == "Wind" && getEmpowerment() == "Wind" && !game.global.mapsActive &&
+        (((game.global.challengeActive != "Daily" && calcHDRatio() < getPageSetting('WindStackingMinHD'))
+            || (game.global.challengeActive == "Daily" && calcHDRatio() < getPageSetting('dWindStackingMinHD')))
+                && ((game.global.challengeActive != "Daily" && game.global.world >= getPageSetting('WindStackingMin'))
+                    || (game.global.challengeActive == "Daily" && game.global.world >= getPageSetting('dWindStackingMin'))))
+                        || (game.global.uberNature == "Wind" && getEmpowerment() == "Wind" && !game.global.mapsActive && checkIfLiquidZone() && getPageSetting('liqstack') == true))
+    {
         scry = 5;
     }
     
