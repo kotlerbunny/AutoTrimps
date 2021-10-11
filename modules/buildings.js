@@ -97,7 +97,8 @@ function buyFoodEfficientHousing() {
             'name': unlockedHousing[house],
             'ratio': ratio
         });
-        document.getElementById(unlockedHousing[house]).style.border = "1px solid #FFFFFF";
+	if (!usingRealTimeOffline)
+        	document.getElementById(unlockedHousing[house]).style.border = "1px solid #FFFFFF";
     }
     buildorder.sort(function (a, b) {
         return a.ratio - b.ratio;
@@ -109,7 +110,8 @@ function buyFoodEfficientHousing() {
         bestfoodBuilding = bb.name;
     }
     if (bestfoodBuilding) {
-        document.getElementById(bestfoodBuilding).style.border = "1px solid #00CC01";
+        if (!usingRealTimeOffline)
+        	document.getElementById(bestfoodBuilding).style.border = "1px solid #00CC01";
         safeBuyBuilding(bestfoodBuilding);
     }
 }
@@ -128,7 +130,8 @@ function buyGemEfficientHousing() {
         var cost = getBuildingItemPrice(building, "gems", false, 1);
         var ratio = cost / building.increase.by;
         obj[unlockedHousing[house]] = ratio;
-        document.getElementById(unlockedHousing[house]).style.border = "1px solid #FFFFFF";
+        if (!usingRealTimeOffline)
+		document.getElementById(unlockedHousing[house]).style.border = "1px solid #FFFFFF";
     }
     var keysSorted = Object.keys(obj).sort(function (a, b) {
             return obj[a] - obj[b];
@@ -139,15 +142,17 @@ function buyGemEfficientHousing() {
         if (max === false) max = -1;
         if (game.buildings[keysSorted[best]].owned < max || max == -1 || (MODULES["buildings"].gemEfficiencyIgnoresLimit && keysSorted[best] != "Gateway")) {
             bestBuilding = keysSorted[best];
-            document.getElementById(bestBuilding).style.border = "1px solid #00CC00";
+            if (!usingRealTimeOffline)
+        	document.getElementById(bestBuilding).style.border = "1px solid #00CC00";
             
             //Gateway Wall
             if (bestBuilding == "Gateway" && MODULES["buildings"].gatewayWall > 1) {
                 if (getBuildingItemPrice(game.buildings.Gateway, "fragments", false, 1) > (game.resources.fragments.owned / MODULES["buildings"].gatewayWall)) {
-                    document.getElementById(bestBuilding).style.border = "1px solid orange";
-	                bestBuilding = null;
+                    if (!usingRealTimeOffline)
+        		document.getElementById(bestBuilding).style.border = "1px solid orange";
+	            bestBuilding = null;
                     continue;
-                }
+                    }
 	        }
 
             var skipWarp = false;
