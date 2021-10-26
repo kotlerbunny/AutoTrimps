@@ -11,7 +11,7 @@ function isActiveSpireAT(){return game.global.challengeActive!='Daily'&&game.glo
 function disActiveSpireAT(){return game.global.challengeActive=='Daily'&&game.global.spireActive&&game.global.world>=getPageSetting('dIgnoreSpiresUntil')}
 function exitSpireCell(){isActiveSpireAT()&&game.global.lastClearedCell>=getPageSetting('ExitSpireCell')-1&&endSpire()}
 function dailyexitSpireCell(){disActiveSpireAT()&&game.global.lastClearedCell>=getPageSetting('dExitSpireCell')-1&&endSpire()}
-function plusPres(){document.getElementById("biomeAdvMapsSelect").value="Random",document.getElementById("advExtraLevelSelect").value=plusMapToRun(game.global.world),document.getElementById("advSpecialSelect").value="p",document.getElementById("lootAdvMapsRange").value=0,document.getElementById("difficultyAdvMapsRange").value=9,document.getElementById("sizeAdvMapsRange").value=9,document.getElementById("advPerfectCheckbox").checked=!1,document.getElementById("mapLevelInput").value=game.global.world,updateMapCost()}
+function plusPres(){document.getElementById("biomeAdvMapsSelect").value="Random",document.getElementById("advExtraLevelSelect").value=plusMapToRun(game.global.world),document.getElementById("advSpecialSelect").value="p",document.getElementById("lootAdvMapsRange").value=0,document.getElementById("difficultyAdvMapsRange").value=9,document.getElementById("sizeAdvMapsRange").value=9,document.getElementById("advPerfectCheckbox").checked=!1,document.getElementById("mapLevelInput").value=game.global.world,incrementMapLevel(0),updateMapCost()}
 function plusMapToRun(a){return (a%10 == 9) ? 6 : (a%10 < 5 ? 5-a%10 : 11-a%10)}
 function findLastBionic(){for(var a=game.global.mapsOwnedArray.length-1;0<=a;a--)if("Bionic"===game.global.mapsOwnedArray[a].location)return game.global.mapsOwnedArray[a]}
 function helptrimpsnotdie(){if(!game.global.preMapsActive&&!game.global.fighting)buyArms();}
@@ -152,8 +152,8 @@ function plusPres1() {
 	document.getElementById("sizeAdvMapsRange").value=9;
 	document.getElementById("advPerfectCheckbox").checked=true;
 	document.getElementById("mapLevelInput").value=game.global.world;
-	updateMapCost();
 	incrementMapLevel(0);
+	updateMapCost();
 
 	if (updateMapCost(true) > game.resources.fragments.owned) {
 	document.getElementById("biomeAdvMapsSelect").value="Random";
@@ -2685,6 +2685,7 @@ function RAMPplusPres(number) {
     document.getElementById("sizeAdvMapsRange").value = 9;
     document.getElementById("advPerfectCheckbox").checked = false;
     document.getElementById("mapLevelInput").value = game.global.world;
+    incrementMapLevel(0);
     updateMapCost();
 
     if (updateMapCost(true) > game.resources.fragments.owned) {
@@ -2879,6 +2880,7 @@ function RAMPplusPresfragmax(number) {
     document.getElementById("sizeAdvMapsRange").value = 9;
     document.getElementById("advPerfectCheckbox").checked = false;
     document.getElementById("mapLevelInput").value = game.global.world;
+    incrementMapLevel(0);
     updateMapCost();
     return updateMapCost(true);
 }
@@ -2892,6 +2894,7 @@ function RAMPplusPresfragmin(number) {
     document.getElementById("sizeAdvMapsRange").value = 9;
     document.getElementById("advPerfectCheckbox").checked = false;
     document.getElementById("mapLevelInput").value = game.global.world;
+    incrementMapLevel(0);
     updateMapCost();
     if (updateMapCost(true) <= game.resources.fragments.owned) {
         return updateMapCost(true);
@@ -3089,6 +3092,7 @@ function insanityfragmap() {
     document.getElementById("sizeAdvMapsRange").value = 9;
     document.getElementById("advPerfectCheckbox").checked = true;
     document.getElementById("mapLevelInput").value = game.global.world;
+    incrementMapLevel(0);
     updateMapCost();
 
     if (updateMapCost(true) > game.resources.fragments.owned) {
@@ -3186,6 +3190,7 @@ function insanityfragmin(number) {
     document.getElementById("sizeAdvMapsRange").value = 9;
     document.getElementById("advPerfectCheckbox").checked = true;
     document.getElementById("mapLevelInput").value = game.global.world;
+    incrementMapLevel(0);
     updateMapCost();
     if (updateMapCost(true) <= game.resources.fragments.owned) {
         return updateMapCost(true);
@@ -3342,6 +3347,7 @@ function shipfragmap() {
     document.getElementById("sizeAdvMapsRange").value = 9;
     document.getElementById("advPerfectCheckbox").checked = true;
     document.getElementById("mapLevelInput").value = game.global.world;
+    incrementMapLevel(0);
     updateMapCost();
 
     if (updateMapCost(true) > game.resources.fragments.owned) {
@@ -3439,6 +3445,7 @@ function shipfragmin(number) {
     document.getElementById("sizeAdvMapsRange").value = 9;
     document.getElementById("advPerfectCheckbox").checked = true;
     document.getElementById("mapLevelInput").value = game.global.world;
+    incrementMapLevel(0);
     updateMapCost();
     if (updateMapCost(true) <= game.resources.fragments.owned) {
         return updateMapCost(true);
