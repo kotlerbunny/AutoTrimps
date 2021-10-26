@@ -153,6 +153,7 @@ function plusPres1() {
 	document.getElementById("advPerfectCheckbox").checked=true;
 	document.getElementById("mapLevelInput").value=game.global.world;
 	updateMapCost();
+	incrementMapLevel(0);
 
 	if (updateMapCost(true) > game.resources.fragments.owned) {
 	document.getElementById("biomeAdvMapsSelect").value="Random";
@@ -253,6 +254,7 @@ function plusPres2() {
 	document.getElementById("sizeAdvMapsRange").value=9;
 	document.getElementById("advPerfectCheckbox").checked=true;
 	document.getElementById("mapLevelInput").value=game.global.world;
+	incrementMapLevel(0);
 	updateMapCost();
 
 	if (updateMapCost(true) > game.resources.fragments.owned) {
@@ -354,6 +356,7 @@ function plusPres3() {
 	document.getElementById("sizeAdvMapsRange").value=9;
 	document.getElementById("advPerfectCheckbox").checked=true;
 	document.getElementById("mapLevelInput").value=game.global.world;
+	incrementMapLevel(0);
 	updateMapCost();
 
 	if (updateMapCost(true) > game.resources.fragments.owned) {
@@ -455,6 +458,7 @@ function plusPres4() {
 	document.getElementById("sizeAdvMapsRange").value=9;
 	document.getElementById("advPerfectCheckbox").checked=true;
 	document.getElementById("mapLevelInput").value=game.global.world;
+	incrementMapLevel(0);
 	updateMapCost();
 
 	if (updateMapCost(true) > game.resources.fragments.owned) {
@@ -556,6 +560,7 @@ function plusPres5() {
 	document.getElementById("sizeAdvMapsRange").value=9;
 	document.getElementById("advPerfectCheckbox").checked=true;
 	document.getElementById("mapLevelInput").value=game.global.world;
+	incrementMapLevel(0);
 	updateMapCost();
 
 	if (updateMapCost(true) > game.resources.fragments.owned) {
