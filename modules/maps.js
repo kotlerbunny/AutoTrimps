@@ -920,6 +920,7 @@ function autoMap() {
                 }
                 else gotBetterMod = testMapSpecialModController(tryBetterMod);
             }
+            $mapLevelInput.value = Math.max(6, Number($mapLevelInput.value));
             var mapLvlPicked = parseInt($mapLevelInput.value) + (getPageSetting('AdvMapSpecialModifier') ? getExtraMapLevels() : 0);
 
             //Sorry for the mess, this whole thing needs a rework
