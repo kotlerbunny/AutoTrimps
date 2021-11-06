@@ -228,7 +228,7 @@ function calcHealthRatio(stance, fullGeneticist, type, targetZone) {
     if (game.talents.mapHealth.purchased && game.global.mapsActive && type != "map") health /= 2;
 
     //The Resulting Ratio
-    var finalDmg = Math.max(worldDamage - block, voidDamage, worldDamage * pierce, 0);
+    var finalDmg = Math.max(worldDamage - block, voidDamage, worldDamage * pierce, 1);
     return health / finalDmg;
 }
 
@@ -1122,7 +1122,7 @@ function RcalcOurDmg(minMaxAvg, equality) {
 
     // Hunger
     number *= game.portal.Hunger.getMult();
-	
+
     // Ob
     number *= game.portal.Observation.getMult();
 
@@ -1137,7 +1137,7 @@ function RcalcOurDmg(minMaxAvg, equality) {
 
     // Frenzy perk
     //number *= (game.portal.Frenzy.frenzyTime) ? game.portal.Frenzy.getAttackMult() : 1;
-	
+
     // Golden Upgrade
     number *= 1 + game.goldenUpgrades.Battle.currentBonus;
 
@@ -1237,9 +1237,9 @@ function RcalcOurDmg(minMaxAvg, equality) {
 }
 
 function RcalcOurHealth() {
-	
+
     //Health
-	
+
     var health = 50;
     if (game.resources.trimps.maxSoldiers > 0) {
         var equipmentList = ["Shield", "Boots", "Helmet", "Pants", "Shoulderguards", "Breastplate", "Gambeson"];
@@ -1299,11 +1299,11 @@ function RcalcOurHealth() {
     if (typeof game.global.dailyChallenge.pressure !== 'undefined') {
         health *= (dailyModifiers.pressure.getMult(game.global.dailyChallenge.pressure.strength, game.global.dailyChallenge.pressure.stacks));
     }
-	
+
     //Pris
-	
+
     health *= (getEnergyShieldMult() + 1);
-	
+
     return health;
 }
 
@@ -1418,7 +1418,7 @@ function RcalcEnemyHealth(world) {
 	health *= 10;
     }
     if (game.global.challengeActive == "Archaeology") {
-	
+
     }
     if (game.global.challengeActive == "Mayhem") {
 	health *= game.challenges.Mayhem.getEnemyMult();
