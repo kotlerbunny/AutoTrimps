@@ -1,5 +1,5 @@
 //Initialize the saved data objects, and load data/grab from browser if found.
-var basepath = 'https://zorn192.github.io/AutoTrimps/';
+var basepath = 'https://orkunkocyigit.github.io/AutoTrimps/';
 function safeSetItems(name,data) {
     try {
         localStorage.setItem(name, data);

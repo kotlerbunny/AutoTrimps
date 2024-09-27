@@ -1,4 +1,4 @@
-var basepath = 'https://zorn192.github.io/AutoTrimps/';
+var basepath = 'https://orkunkocyigit.github.io/AutoTrimps/';
 
 function safeSetItems1(name,data) {
     try {

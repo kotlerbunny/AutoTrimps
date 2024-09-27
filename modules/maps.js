@@ -920,6 +920,7 @@ function autoMap() {
                 }
                 else gotBetterMod = testMapSpecialModController(tryBetterMod);
             }
+            $mapLevelInput.value = Math.max(6, Number($mapLevelInput.value));
             var mapLvlPicked = parseInt($mapLevelInput.value) + (getPageSetting('AdvMapSpecialModifier') ? getExtraMapLevels() : 0);
 
             //Sorry for the mess, this whole thing needs a rework
@@ -961,7 +962,8 @@ function autoMap() {
                 runMap();
                 lastMapWeWereIn = getCurrentMapObject();
             } else {
-                debug("Buying a Map, level: #" + mapLvlPicked + " for " + updateMapCost(true).toExponential(2) + " fragments", "maps", 'th-large');
+                let mapCost = updateMapCost(true) ? updateMapCost(true).toExponential(2) : game.resources.fragments.owned;
+                debug("Buying a Map, level: #" + mapLvlPicked + " for " + mapCost + " fragments", "maps", 'th-large');
                 var result = buyMap();
                 if (result == -2) {
                     debug("Too many maps, recycling now: ", "maps", 'th-large');
